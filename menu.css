@@ -1,0 +1,101 @@
+
+
+.header nav ul{
+    display: flex;
+}
+.header nav ul li a{
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: 0.3s;
+    color: green;
+}
+/* Novamente a:hover é para quando o mouse passar em cima do meu "a" */
+.header nav ul li a:hover{
+    color: green;
+    background-color: #fff;
+}
+.header .menu{
+    display: none;
+    width: 60px;
+    height: 60px;
+    align-self:flex-end;
+}
+/* como o menu acima esta dentro da nossa label eu preciso definir a mesma como um display:flex 
+para que la eu possa tornar os elementos flex-itens e consiga utilizar a propriedade 
+align-self:flex-end; e como o intuito é definir o objeto sempre a direita e nao abaixo 
+devemos definir a flex-direction: column pois por padrao flex a mesma é row */
+.header nav label{
+    display: flex;
+    flex-direction: column;
+}
+.header .hamburguer{
+    background-color: green;
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 2px;
+    top: 29px;
+    left: 15px;
+    transition: 0.5s ease-in-out;
+}
+.header .hamburguer:before, .header .hamburguer:after{
+    background-color:green;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+}
+.header .hamburguer:before{
+    top: -10px;
+}
+.header .hamburguer:after{
+    bottom: -10px;
+}
+.header input{
+    display: none;
+}
+.header input:checked ~ label .hamburguer{
+    transform: rotate(45deg);
+}
+.header input:checked ~ label .hamburguer:before{
+    transform: rotate(90deg);
+    top: 0;
+}
+.header input:checked ~ label .hamburguer:after{
+    transform: rotate(90deg);
+    bottom: 0;
+}
+@media(max-width: 900px){
+    .header .menu{
+        display: block;
+    }
+    .header nav ul{
+        display: none;
+    }
+    .header input:checked ~ ul{
+        display: block;
+
+    }
+    .header nav{
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        z-index: 1;
+    }
+    .header nav ul{
+        width: 200px;
+        background-color: black;
+        padding: 20px;
+    }
+    /* Agora estamos estilizando os links a onde iremos centralizar os textos e colocarmos o
+    display-block pois o mesmo nao foi definido na tag ainda */
+    .header nav ul a{
+        text-align: center;
+        padding: 20px;
+        display: block;
+    }
+}
